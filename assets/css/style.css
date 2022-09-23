@@ -1,3 +1,5 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -106,12 +108,16 @@
       @apply  !text-black text-29;
    }
 
-   .footer input {
+   .footer .hbspt-form form input {
       @apply border-2 border-white rounded-[50px] !text-white p-20 bg-transparent text-16 w-full font-GTAmericaMono;
    }
 
    .footer ::placeholder {
       @apply  !text-white text-16 font-GTAmericaMono;
+   }
+
+   .acc-content p {
+      @apply font-Grantha text-20 text-darkgray uppercase tracking-[0.02em];
    }
    
 }
@@ -123,7 +129,7 @@
    }
 
    .btn-lightgreen {
-      @apply m-0 pt-22 pb-20 px-30 inline-block text-34  text-black font-Roc not-italic border-4 border-black transition-all duration-300 ease-linear uppercase rounded-[50px] bg-lightgreen leading-[1em] shadow-[0px_20px_30px_0_rgba(80,80,80,0.2)] mdscreen2:text-27;
+      @apply m-0 pt-22 pb-20 px-30 inline-block text-34  text-black font-Roc not-italic border-4 border-black transition-all duration-300 ease-linear uppercase rounded-[50px] bg-lightgreen leading-[1em] shadow-[0px_20px_30px_0_rgba(80,80,80,0.2)] mdscreen2:text-27 mdscreen2:px-20 mdscreen2:pt-16 mdscreen2:pb-14;
    }
 
    .btn-lightgreen:hover {
@@ -131,7 +137,7 @@
    }
 
    .btn-white {
-      @apply m-0 px-[23px] py-20 inline-block text-34 text-black font-Roc not-italic border-4 border-black transition-all duration-300 ease-linear uppercase rounded-[50px] bg-white shadow-[0px_20px_30px_0_rgba(80,80,80,0.2)] mdscreen2:text-27;
+      @apply m-0 pt-22 pb-20 px-30 inline-block text-34 text-black font-Roc not-italic border-4 border-black transition-all duration-300 ease-linear uppercase rounded-[50px] bg-white leading-[1em] shadow-[0px_20px_30px_0_rgba(80,80,80,0.2)] mdscreen2:text-27 mdscreen2:px-20 mdscreen2:pt-16 mdscreen2:pb-14;
    }
 
    .btn-white:hover,
@@ -289,7 +295,7 @@
           animation-name: scroll;
 }
 
-.icon-scroll.border-downgray:before {
+.icon-scroll .border-downgray:before {
    @apply bg-downgray;
  }
 
@@ -591,65 +597,55 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active {
 
 
 /** ticker **/
-.ticker {
+.ticker-wrap {
    width: 100%;
-   height: 64px;
-   padding: 0;
    overflow: hidden;
-   @apply mdscreen:h-[40px];
+   box-sizing: content-box;
  }
- .ticker ul {
-   position: relative;
-   list-style: none;
-   height: 100%;
-   padding: 0;
-   margin: 0;
+ .ticker-wrap .ticker {
+   display: inline-block;
+   white-space: nowrap;
+   padding-right: 100%;
+   box-sizing: content-box;
+   -webkit-animation-iteration-count: infinite;
+   animation-iteration-count: infinite;
+   -webkit-animation-timing-function: linear;
+   animation-timing-function: linear;
+   -webkit-animation-name: ticker;
+   animation-name: ticker;
+   -webkit-animation-duration: 30s;
+   animation-duration: 50s;
  }
- .ticker-item {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   padding-right: 0;
-   opacity: 0;
+ .ticker-wrap .ticker__item {
+   display: inline-block;
+   padding: 0 2rem;
  }
- .fadeInDown {
-   opacity: 0;
+ @-webkit-keyframes ticker {
+   0% {
+     -webkit-transform: translate3d(0, 0, 0);
+     transform: translate3d(0, 0, 0);
+     visibility: visible;
+   }
+   100% {
+     -webkit-transform: translate3d(-100%, 0, 0);
+     transform: translate3d(-100%, 0, 0);
+   }
  }
- .fadeInDown.run {
-   animation: fadeInDown 200ms cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
- }
- .fadeOutDown {
-   opacity: 1;
- }
- .fadeOutDown.run {
-   animation: fadeOutDown 200ms cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+ @keyframes ticker {
+   0% {
+     -webkit-transform: translate3d(0, 0, 0);
+     transform: translate3d(0, 0, 0);
+     visibility: visible;
+   }
+   100% {
+     -webkit-transform: translate3d(-100%, 0, 0);
+     transform: translate3d(-100%, 0, 0);
+   }
  }
 
- .footer li a:hover {
-   @apply text-lightgreen;
- }
- @keyframes fadeInDown {
-   0% {
-     opacity: 0;
-     transform: translateY(-30px);
-   }
-   100% {
-     opacity: 1;
-     transform: translateY(0);
-   }
- }
- @keyframes fadeOutDown {
-   0% {
-     opacity: 1;
-     transform: translateY(0);
-   }
-   100% {
-     opacity: 0;
-     transform: translateY(30px);
-   }
- }
+
+
+
  @keyframes blink {
    0%, 100% {
      opacity: 1;
@@ -770,7 +766,47 @@ body .timeline ul li.blink:before{
    display: none !important;
 }
 
+/** black section **/
+.less-padding {
+   padding-bottom: 90px;
+}
+.padding-none {
+   padding-bottom: 10px;
+}
+@media (max-width:991px) {
+   .less-padding {
+      padding-bottom: 60px;
+   }
+   .co-three .dot-two {
+      top:initial;
+      bottom: -110px;
+   }
+   .co-three .dot-one {
+      bottom:-92%
+   }
+}
 
+
+.co-two .dot-one {
+   bottom:-15%
+}
+.co-two .dot-two {
+   top:32%
+}
+.co-three .dot-one {
+   bottom:-42%
+}
+.co-three .dot-two {
+   top:55%
+}
+
+.footer .hbspt-form input {
+   background: transparent;
+}
+
+.footer .hs_submit {
+   display: none;
+}
 /** faq **/
 
  .acc-head {
@@ -782,9 +818,16 @@ body .timeline ul li.blink:before{
   .acc-head::after {
    content: '';
    position: absolute;
-   top: 50%;
+   top: 27px;
    background-color: #58BC5F;
    transition: all .3s;
+  }
+
+  @media (max-width:1200px) {
+   .acc-head::before,
+   .acc-head::after {
+    top: 50%;
+   }
   }
  
   .acc-head::before {
@@ -866,7 +909,7 @@ body .timeline ul li.blink:before{
    @apply order-5 mt-30 py-20 w-full;
  }
  .contact-form input.class-applied-to-submit-button {
-   @apply py-20 px-80 font-Roc text-37 !text-lightgreen bg-black max-w-[350px] cursor-pointer;
+   @apply py-20 px-80 font-Roc text-37 !text-lightgreen leading-[1em] bg-black max-w-[350px] cursor-pointer;
  }
  .contact-form input.class-applied-to-submit-button:hover {
    @apply  !text-black bg-lightgreen;
@@ -874,7 +917,7 @@ body .timeline ul li.blink:before{
 
 
 input.class-applied-to-submit-button {
-   @apply m-0 px-[23px] py-15 inline-block text-34 text-black font-Roc not-italic border-4 border-black transition-all duration-300 ease-linear uppercase rounded-[50px] bg-white shadow-[0px_20px_30px_0_rgba(80,80,80,0.2)] mdscreen2:text-27;
+   @apply m-0 px-[23px] py-15 inline-block text-34 text-black font-Roc not-italic border-4 border-black transition-all duration-300 ease-linear uppercase rounded-[50px] bg-white leading-[1em] shadow-[0px_20px_30px_0_rgba(80,80,80,0.2)] mdscreen2:text-27;
 }
 
 

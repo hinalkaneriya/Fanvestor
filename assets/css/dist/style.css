@@ -464,10 +464,10 @@ h2 {
 
 h3 {
   font-size: clamp(1rem, 7vw, 4rem);
-  line-height: 1em;
   font-family: Gravitica Light Demo;
   font-weight: 300;
   text-transform: uppercase;
+  line-height: 1em;
 }
 
 h4 {
@@ -549,7 +549,7 @@ input {
   color: rgb(12 12 12 / var(--tw-text-opacity)) !important;
 }
 
-.footer input {
+.footer .hbspt-form form input {
   width: 100%;
   border-radius: 50px;
   border-width: 2px;
@@ -575,6 +575,15 @@ input {
   font-size: clamp(1rem, 7vw, 1rem);
   --tw-text-opacity: 1 !important;
   color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+
+.acc-content p {
+  font-family: Grantha Sangam MN;
+  font-size: clamp(1rem, 7vw, 1.25rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  --tw-text-opacity: 1;
+  color: rgb(138 138 138 / var(--tw-text-opacity));
 }
 
 *, ::before, ::after {
@@ -834,6 +843,10 @@ input {
 
 @media (max-width: 991px) {
   .btn-lightgreen {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 16px;
+    padding-bottom: 14px;
     font-size: clamp(1rem, 7vw, 1.688rem);
   }
 }
@@ -852,8 +865,7 @@ input {
   transition-timing-function: linear;
 }
 
-.btn-white, 
-   .class-applied-to-submit-button {
+.btn-white {
   margin: 0px;
   display: inline-block;
   border-radius: 50px;
@@ -862,14 +874,15 @@ input {
   border-color: rgb(12 12 12 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  padding-left: 23px;
-  padding-right: 23px;
-  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 22px;
   padding-bottom: 20px;
   font-family: Roc Grotesk Wide;
   font-size: clamp(1rem, 7vw, 2.125rem);
   text-transform: uppercase;
   font-style: normal;
+  line-height: 1em;
   --tw-text-opacity: 1;
   color: rgb(12 12 12 / var(--tw-text-opacity));
   --tw-shadow: 0px 20px 30px 0 rgba(80,80,80,0.2);
@@ -882,8 +895,11 @@ input {
 }
 
 @media (max-width: 991px) {
-  .btn-white, 
-   .class-applied-to-submit-button {
+  .btn-white {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 16px;
+    padding-bottom: 14px;
     font-size: clamp(1rem, 7vw, 1.688rem);
   }
 }
@@ -904,7 +920,6 @@ input.btn-white:hover ::-moz-placeholder {
 }
 
 .btn-white:hover, 
-   .class-applied-to-submit-button:hover, 
    input.btn-white:hover ::placeholder {
   --tw-bg-opacity: 1;
   background-color: rgb(12 12 12 / var(--tw-bg-opacity));
@@ -2693,7 +2708,7 @@ header .flex.full-menu.pt-35 {
   animation-name: scroll;
 }
 
-.icon-scroll.border-downgray:before {
+.icon-scroll .border-downgray:before {
   --tw-bg-opacity: 1;
   background-color: rgb(84 93 78 / var(--tw-bg-opacity));
 }
@@ -2825,6 +2840,12 @@ header .flex.items-center.pt-35 {
   padding-top: 20px;
   padding-bottom: 120px;
   max-width: 420px;
+}
+
+@media (max-width:480px) {
+  .gallery-thumbs {
+    height: 200px;
+  }
 }
 
 .gallery-thumbs img {
@@ -3011,105 +3032,51 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active {
 
 /** ticker **/
 
-.ticker {
+.ticker-wrap {
   width: 100%;
-  height: 64px;
-  padding: 0;
   overflow: hidden;
+  box-sizing: content-box;
 }
 
-@media (max-width: 768px) {
-  .ticker {
-    height: 40px;
-  }
+.ticker-wrap .ticker {
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 100%;
+  box-sizing: content-box;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: ticker;
+  animation-name: ticker;
+  -webkit-animation-duration: 30s;
+  animation-duration: 50s;
 }
 
-.ticker ul {
-  position: relative;
-  list-style: none;
-  height: 100%;
-  padding: 0;
-  margin: 0;
+.ticker-wrap .ticker__item {
+  display: inline-block;
+  padding: 0 2rem;
 }
 
-.ticker-item {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding-right: 0;
-  opacity: 0;
-}
-
-.fadeInDown {
-  opacity: 0;
-}
-
-.fadeInDown.run {
-  -webkit-animation: fadeInDown 200ms cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-          animation: fadeInDown 200ms cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-}
-
-.fadeOutDown {
-  opacity: 1;
-}
-
-.fadeOutDown.run {
-  -webkit-animation: fadeOutDown 200ms cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-          animation: fadeOutDown 200ms cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-}
-
-.footer li a:hover {
-  --tw-text-opacity: 1;
-  color: rgb(195 243 128 / var(--tw-text-opacity));
-}
-
-@-webkit-keyframes fadeInDown {
+@-webkit-keyframes ticker {
   0% {
-    opacity: 0;
-    transform: translateY(-30px);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
   }
 
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 
-@keyframes fadeInDown {
+@keyframes ticker {
   0% {
-    opacity: 0;
-    transform: translateY(-30px);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
   }
 
   100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@-webkit-keyframes fadeOutDown {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-}
-
-@keyframes fadeOutDown {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(30px);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 
@@ -3232,12 +3199,61 @@ body .timeline ul li.blink:before{
   --size: 60%;
 }
 
-.team-card-content.active .overlay {
+.overlay.active {
   display: block !important;
 }
 
-.team-card-content .overlay {
+.overlay {
   display: none !important;
+}
+
+/** black section **/
+
+.less-padding {
+  padding-bottom: 90px;
+}
+
+.padding-none {
+  padding-bottom: 10px;
+}
+
+@media (max-width:991px) {
+  .less-padding {
+    padding-bottom: 60px;
+  }
+
+  .co-three .dot-two {
+    top:initial;
+    bottom: -110px;
+  }
+
+  .co-three .dot-one {
+    bottom:-92%
+  }
+}
+
+.co-two .dot-one {
+  bottom:-15%
+}
+
+.co-two .dot-two {
+  top:32%
+}
+
+.co-three .dot-one {
+  bottom:-42%
+}
+
+.co-three .dot-two {
+  top:55%
+}
+
+.footer .hbspt-form input {
+  background: transparent;
+}
+
+.footer .hs_submit {
+  display: none;
 }
 
 /** faq **/
@@ -3251,9 +3267,16 @@ body .timeline ul li.blink:before{
   .acc-head::after {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 27px;
   background-color: #58BC5F;
   transition: all .3s;
+}
+
+@media (max-width:1200px) {
+  .acc-head::before,
+   .acc-head::after {
+    top: 50%;
+  }
 }
 
 .acc-head::before {
@@ -3280,6 +3303,12 @@ body .timeline ul li.blink:before{
 
 .acc-head.active::before {
   transform: rotate(90deg);
+}
+
+@media (min-width:1080px){
+  .home .footer {
+    margin-top: -50px;
+  }
 }
 
 /** contact **/
@@ -3309,8 +3338,21 @@ header .flex.connect .hbspt-form form.pt-35 {
   border-color: #fff;
 }
 
+@media (max-width: 991px) {
+  .connect .hbspt-form form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 .connect .hbspt-form form .hs-email {
   width: calc(100% - 330px);
+}
+
+@media (max-width: 991px) {
+  .connect .hbspt-form form .hs-email {
+    width: 100%;
+  }
 }
 
 .hbspt-form form label {
@@ -3321,12 +3363,27 @@ header .flex.connect .hbspt-form form.pt-35 {
   margin-left: 20px;
 }
 
+@media (max-width: 991px) {
+  .connect .hbspt-form .class-applied-to-submit-button {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+}
+
 .hbspt-form input {
   --tw-bg-opacity: 1;
   background-color: rgb(195 243 128 / var(--tw-bg-opacity));
   font-family: GT America Mono;
   font-size: clamp(1rem, 7vw, 1.81rem);
   font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .hbspt-form .field input {
+    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 .contact-form .hbspt-form {
@@ -3363,6 +3420,13 @@ header .contact-form .hbspt-form form.items-center.pt-35 {
   padding-right: 10px;
 }
 
+@media (max-width: 640px) {
+  .contact-form .hs_firstname {
+    width: 100%;
+    padding-right: 0px;
+  }
+}
+
 .contact-form .hs_lastname {
   order: 2;
   display: inline-block;
@@ -3370,6 +3434,13 @@ header .contact-form .hbspt-form form.items-center.pt-35 {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 10px;
+}
+
+@media (max-width: 640px) {
+  .contact-form .hs_lastname {
+    width: 100%;
+    padding-left: 0px;
+  }
 }
 
 .contact-form .hs_phone {
@@ -3398,6 +3469,7 @@ header .contact-form .hbspt-form form.items-center.pt-35 {
   padding-right: 80px;
   font-family: Roc Grotesk Wide;
   font-size: clamp(1rem, 7vw, 2.3125rem);
+  line-height: 1em;
   --tw-text-opacity: 1 !important;
   color: rgb(195 243 128 / var(--tw-text-opacity)) !important;
 }
@@ -3407,6 +3479,55 @@ header .contact-form .hbspt-form form.items-center.pt-35 {
   background-color: rgb(195 243 128 / var(--tw-bg-opacity));
   --tw-text-opacity: 1 !important;
   color: rgb(12 12 12 / var(--tw-text-opacity)) !important;
+}
+
+input.class-applied-to-submit-button {
+  margin: 0px;
+  display: inline-block;
+  border-radius: 50px;
+  border-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: rgb(12 12 12 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 23px;
+  padding-right: 23px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-family: Roc Grotesk Wide;
+  font-size: clamp(1rem, 7vw, 2.125rem);
+  text-transform: uppercase;
+  font-style: normal;
+  line-height: 1em;
+  --tw-text-opacity: 1;
+  color: rgb(12 12 12 / var(--tw-text-opacity));
+  --tw-shadow: 0px 20px 30px 0 rgba(80,80,80,0.2);
+  --tw-shadow-colored: 0px 20px 30px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  transition-timing-function: linear;
+}
+
+@media (max-width: 991px) {
+  input.class-applied-to-submit-button {
+    font-size: clamp(1rem, 7vw, 1.688rem);
+  }
+}
+
+input.class-applied-to-submit-button:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(12 12 12 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  transition-timing-function: linear;
 }
 
 .hover\:rotate-\[360deg\]:hover {
@@ -4040,3 +4161,5 @@ header .contact-form .hbspt-form form.items-center.pt-35 {
     padding-right: 0px;
   }
 }
+
+
